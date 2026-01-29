@@ -1,5 +1,5 @@
 provider "github" {
-    token = "Add your token here"
+    token = "PAT"
 }
 
 resource "github_repository" "terraform-first-repo" {
