@@ -22,6 +22,8 @@ resource "github_repository" "terraform-second-repo" {
 // To create the repository, run the following commands in your terminal:
 
 // $ terraform init
+// $ terraform validate
+// $ terraform plan
 // $terraform apply
 
 // Confirm the apply action by typing "yes" when prompted.
