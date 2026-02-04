@@ -21,14 +21,19 @@ resource "aws_instance" "EC2UsingTerraform" {
   }
   // or you can use the below user_data script to run any script present in the same directory
   user_data = file("${path.module}/script.sh")
+
+// Provisioner are three types: file, remote-exec and local-exec
+  provisioner "file" {
+    source = "${path.module}/README.md" // In Terraform Machine
+    destination = "/tmp/README.md" // In EC2 remote Machine
+    connection {
+      type = "ssh"
+      user = "ubuntu"
+      private_key = file("${path.module}/id_rsa")
+      host = "${self.public_ip}" // aws_instance.EC2UsingTerraform.public_ip -> self.public_ip refers to the current resource which qill avoid dead loop
+    }
+  }
+
+  // if provisioner fails, the resource will tained state meaning it will destroy the resource and recreate it
 }
 
-// you can use the below user_data script to install nginx on the EC2 instance
-#   user_data = <<-EOF
-  # #!/bin/bash
-  # sudo apt-get update -y
-  # sudo apt-get install nginx -y
-  # echo "<h1> Deployed via Terraform </h1>" > /var/www/html/index.html
-# EOF
-
-// Note : this practice not recommended use File Provisioner instead of user_data for complex scripts

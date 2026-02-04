@@ -3,4 +3,4 @@ image_id      = "ami-0b6c6ebed2801a5cb" # Ubuntu Server 24.04 LTS (HVM), SSD Vol
 instance_type = "t3.micro"
 access_key = "your_access_key_here"
 secret_key = "your_secret_key_here"
-// Noite: Replace the above access_key and secret_key with your actual AWS credentials.
+// Note: Replace the above access_key and secret_key with your actual AWS credentials.
