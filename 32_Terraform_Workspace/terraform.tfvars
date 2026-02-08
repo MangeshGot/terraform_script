@@ -1,0 +1,6 @@
+instance_type = "t3.micro"
+image_id      = "ami-0b6c6ebed2801a5cb"
+access_key    = "your_access_key_here"
+secret_key    = "your_secret_key_here"
+region        = "us-east-1"
+tag_N_type = "t3.micro-Default Environment"
