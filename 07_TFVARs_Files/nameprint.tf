@@ -25,4 +25,4 @@ output "userage" {
   //+ userage = "my name is Mangesh and my age is 31"
 
 // Command to run with specific tfvars file
-//  terraform plan -var-file=devlopment.tfvars
+//  terraform plan --var-file=devlopment.tfvars

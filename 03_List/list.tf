@@ -5,6 +5,14 @@ output print {
     value = "First User ID is: ${var.user_ids[0]}"
 }
 
+output print2 {
+    value = "First User ID is: ${var.user_ids[1]}"
+}
+
+output print1 {
+    value = "First User ID is: ${var.user_ids[2]}"
+}
+
 // Input Variables:
 // var.user_ids
 //   Enter a value: ["Mangesh","saurav","bhairav"]
