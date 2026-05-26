@@ -54,6 +54,7 @@ resource "aws_instance" "instance1" {
   ami           = "ami-0236922087fa98b6e" # Amazon Linux 2 AMI (HVM), SSD Volume Type
   instance_type = "t3.micro"
   subnet_id     = aws_subnet.SUBNET_A.id
+  vpc_security_group_ids = [aws_security_group.sg_a.id]
   tags = {
     Name = "Instance_in_VPC_A"
   }
@@ -63,6 +64,7 @@ resource "aws_instance" "instance2" {
   ami           = "ami-0236922087fa98b6e" # Amazon Linux 2 AMI (HVM), SSD Volume Type
   instance_type = "t3.micro"
   subnet_id     = aws_subnet.SUBNET_B.id
+  vpc_security_group_ids = [aws_security_group.sg_b.id]
   tags = {
     Name = "Instance_in_VPC_B"
   }
@@ -72,6 +74,7 @@ resource "aws_instance" "instance3" {
   ami           = "ami-0236922087fa98b6e" # Amazon Linux 2 AMI (HVM), SSD Volume Type
   instance_type = "t3.micro"
   subnet_id     = aws_subnet.SUBNET_C.id
+  vpc_security_group_ids = [aws_security_group.sg_c.id]
   tags = {
     Name = "Instance_in_VPC_C"
   }
@@ -81,6 +84,7 @@ resource "aws_instance" "instance4" {
   ami           = "ami-0236922087fa98b6e" # Amazon Linux 2 AMI (HVM), SSD Volume Type
   instance_type = "t3.micro"
   subnet_id     = aws_subnet.SUBNET_D.id
+  vpc_security_group_ids = [aws_security_group.sg_d.id]
   tags = {
     Name = "Instance_in_VPC_D"
   }
@@ -113,4 +117,89 @@ resource "aws_ec2_transit_gateway_vpc_attachment" "vpc_d_attach" {
   subnet_ids         = [aws_subnet.SUBNET_D.id]
   transit_gateway_id = aws_ec2_transit_gateway.main_tgw.id
   vpc_id             = aws_vpc.peer3.id
+}
+
+resource "aws_ec2_transit_gateway_route_table" "tgw_rt" {
+  transit_gateway_id = aws_ec2_transit_gateway.main_tgw.id
+}
+
+
+resource "aws_security_group" "sg_a" {
+  name        = "allow_icmp_a"
+  description = "Allow all inbound and outbound traffic"
+  vpc_id      = aws_vpc.main.id
+
+  ingress {
+    from_port   = -1
+    to_port     = -1
+    protocol    = "icmp"
+    cidr_blocks = ["192.168.0.0/16"] 
+  }
+
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"] 
+  }
+}
+
+resource "aws_security_group" "sg_b" {
+  name        = "allow_icmp_b"
+  description = "Allow all inbound and outbound traffic"
+  vpc_id      = aws_vpc.peer1.id
+
+  ingress {
+    from_port   = -1
+    to_port     = -1
+    protocol    = "icmp"
+    cidr_blocks = ["192.168.0.0/16"] 
+  }
+
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"] 
+  }
+}
+
+resource "aws_security_group" "sg_c" {
+  name        = "allow_icmp_c"
+  description = "Allow all inbound and outbound traffic"
+  vpc_id      = aws_vpc.peer2.id
+
+  ingress {
+    from_port   = -1
+    to_port     = -1
+    protocol    = "icmp"
+    cidr_blocks = ["192.168.0.0/16"] 
+  }
+
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"] 
+  }
+}
+
+resource "aws_security_group" "sg_d" {
+  name        = "allow_icmp_d"
+  description = "Allow all inbound and outbound traffic"
+  vpc_id      = aws_vpc.peer3.id
+
+  ingress {
+    from_port   = -1
+    to_port     = -1
+    protocol    = "icmp"
+    cidr_blocks = ["192.168.0.0/16"] 
+  }
+
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"] 
+  }
 }
