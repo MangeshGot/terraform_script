@@ -55,9 +55,7 @@ resource "aws_instance" "instance1" {
   instance_type = "t3.micro"
   subnet_id     = aws_subnet.SUBNET_A.id
   vpc_security_group_ids = [aws_security_group.sg_a.id]
-  tags = {
-    Name = "Instance_in_VPC_A"
-  }
+  tags = {    Name = "Instance_in_VPC_A"  }
 }
 
 resource "aws_instance" "instance2" {
@@ -65,9 +63,7 @@ resource "aws_instance" "instance2" {
   instance_type = "t3.micro"
   subnet_id     = aws_subnet.SUBNET_B.id
   vpc_security_group_ids = [aws_security_group.sg_b.id]
-  tags = {
-    Name = "Instance_in_VPC_B"
-  }
+  tags = {    Name = "Instance_in_VPC_B"    }
 }
 
 resource "aws_instance" "instance3" {
@@ -75,9 +71,7 @@ resource "aws_instance" "instance3" {
   instance_type = "t3.micro"
   subnet_id     = aws_subnet.SUBNET_C.id
   vpc_security_group_ids = [aws_security_group.sg_c.id]
-  tags = {
-    Name = "Instance_in_VPC_C"
-  }
+  tags = {    Name = "Instance_in_VPC_C"  }
 }
 
 resource "aws_instance" "instance4" {
@@ -85,9 +79,7 @@ resource "aws_instance" "instance4" {
   instance_type = "t3.micro"
   subnet_id     = aws_subnet.SUBNET_D.id
   vpc_security_group_ids = [aws_security_group.sg_d.id]
-  tags = {
-    Name = "Instance_in_VPC_D"
-  }
+  tags = {    Name = "Instance_in_VPC_D"  }
 }
 
 resource "aws_ec2_transit_gateway" "main_tgw" {
