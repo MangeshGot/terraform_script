@@ -1,0 +1,13 @@
+aws_ami = "ami-091138d0f0d41ff90"
+aws_instance_type = "t3.micro"
+aws_region = "us-east-1"
+aws_access_key = "Your AWS Access Key Here"
+aws_secret_key = "Your AWS Secret Key Here"
+vpc_cidr_block = "192.168.0.0/24"
+public_subnet_cidr_block_1 =  "192.168.0.0/26"
+public_subnet_cidr_block_2 =  "192.168.0.64/26"
+private_subnet_cidr_block_1 =  "192.168.0.128/26"
+private_subnet_cidr_block_2 =  "192.168.0.192/26"
+http_port = 8080
+ssh_port = 22
+aws_key_pair_name = "ketan"
