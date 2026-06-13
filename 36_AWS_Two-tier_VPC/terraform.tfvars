@@ -1,0 +1,8 @@
+aws_region            = "us-east-1"
+vpc_cidr              = "192.168.0.0/24"
+public_subnet_1_cidr  = "192.168.0.0/26"
+public_subnet_2_cidr  = "192.168.0.64/26"
+private_subnet_1_cidr = "192.168.0.128/26"
+private_subnet_2_cidr = "192.168.0.192/26"
+access_key              = "YOUR_ACCESS_KEY"
+secret_key              = "YOUR_SECRET_KEY"
