@@ -31,3 +31,45 @@ Before you can deploy this infrastructure, you need the following installed on y
 Download the required AWS provider plugins:
 ```bash
 terraform init
+```
+
+### 2. Review the Execution Plan
+Verify the resources Terraform will create before applying them:
+```bash
+terraform plan
+```
+
+If you want to save the plan for later review, you can also run:
+```bash
+terraform plan -out=tfplan
+```
+
+### 3. Deploy the Infrastructure
+Apply the configuration to create the Jenkins Controller, Jenkins Agent, networking, and security resources:
+```bash
+terraform apply
+```
+
+If you saved the plan file in the previous step, apply it with:
+```bash
+terraform apply tfplan
+```
+
+### 4. Verify the Outputs
+After deployment completes, Terraform prints the instance IP addresses. Use these values to confirm the setup:
+* `jenkins_controller_public_ip` - Public IP of the Jenkins Controller
+* `jenkins_agent_private_ip` - Private IP of the Jenkins Agent
+
+### 5. Access Jenkins
+Open a browser and navigate to the controller public IP on port 8080:
+```bash
+http://<jenkins-controller-public-ip>:8080
+```
+
+To finish the Jenkins first-time setup, retrieve the initial admin password from the controller instance and complete the wizard in the browser.
+
+### 6. Clean Up the Environment
+When you are done, remove all created infrastructure to avoid ongoing AWS charges:
+```bash
+terraform destroy
+```
