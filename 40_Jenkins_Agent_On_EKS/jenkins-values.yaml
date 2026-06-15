@@ -1,0 +1,7 @@
+controller:
+  componentName: "jenkins-controller"
+  serviceType: "NodePort"
+  servicePort: 8080
+persistence:
+  enabled: true
+  size: "10Gi"

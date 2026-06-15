@@ -1,0 +1,8 @@
+aws_region = "us-east-1"
+access_key = ""
+secret_key = ""
+eks_vpc_cidr_block = "192.168.0.0/24"
+eks_public_subnet_cidr_block_1 =  "192.168.0.0/26"
+eks_public_subnet_cidr_block_2 =  "192.168.0.64/26"
+eks_private_subnet_cidr_block_1 =  "192.168.0.128/26"
+eks_private_subnet_cidr_block_2 =  "192.168.0.192/26"
